@@ -1,0 +1,36 @@
+version: "4.15"
+services:
+
+  postgres-db:
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+#    environment:
+#      POSTGRES_PASSWORD: lol321
+#      PGDATA: /var/lib/postgresql/data
+    env_file:
+      - postgres.env
+    volumes:
+      - ./postgresdata:/var/lib/postgresql/data
+      - ./init/init.sql:/docker-entrypoint-initdb.d/init.sql
+    shm_size: '1gb'
+
+  metabase-app:
+    image: metabase/metabase
+    restart: always
+    ports:
+      - 3003:3000
+    volumes:
+      - ./metabase-data:/metabase-data
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabase_db
+      MB_DB_PORT: 5432
+      MB_DB_USER: metabase
+      MB_DB_PASS: lol321
+      MB_DB_HOST: postgres-db
+    depends_on:
+      - postgres-db
+    links:
+      - postgres-db
