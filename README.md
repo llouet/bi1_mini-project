@@ -18,9 +18,10 @@ Download data from [https://cloudstorage.elearning.uni-oldenburg.de/s/K3WzZjoyH5
                                                    230122_publications.csv
                                                    230122_years.csv
                                              
-```03-Docker``` – Contains Docker Compose file to run Postgres and Metabase
+```03-Docker``` – Contains Docker Compose to run Postgres and Metabase
 
                   Those include the data base as well as KPI.
+                  Dashboard in Metabase under 'Your Personal Collection/UOL Bibliography'
 
-```04-Database Formal Language.sql``` – Additional SQL file for creating tables in pgAdmin.
+```04-Database Formal Language.sql``` – Additional SQL file for creating tables in pgAdmin
 
